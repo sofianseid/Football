@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
+import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,31 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'football';
+  
+	loading: boolean;
+
+  	optionsNotification = {
+		timeOut: 5000,
+		showProgressBar: true,
+		pauseOnHover: true,
+		clickToClose: true,
+		animate: 'scale',
+		position: ["bottom", "center"],
+		preventLastDuplicates: "visible"
+	}
+
+	constructor(private router: Router) {
+		this.loading = true;
+  	}
+
+	ngAfterViewInit() {
+		this.router.events.subscribe((event) => {
+			if(event instanceof NavigationStart) {
+				this.loading = true;
+			}
+			else if (event instanceof NavigationEnd || event instanceof NavigationCancel) {
+				this.loading = false;
+			}
+		});
+	}
 }

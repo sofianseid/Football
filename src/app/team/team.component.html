@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  	<mat-toolbar-row>
+		<img class="mx-3" [src]="team.badge"/>
+		<span>{{ team.name }}</span>
+	  	<mat-chip-list><mat-chip class="mx-4">{{players?.length || '0'}} Players</mat-chip></mat-chip-list>
+    	<span fxFlex></span>
+		<a mat-icon-button aria-label="Back" matTooltip="Back" matTooltipClass="tooltip-white"matTooltipPosition="left" [routerLink]="['/league', team.leagueId]">
+    		<mat-icon>arrow_back_ios</mat-icon>
+  		</a>
+	</mat-toolbar-row>
+</mat-toolbar>
+
+<div class="my-5 mx-4">
+	<mat-card class="mb-4 mat-elevation-z3" *ngFor="let player of players; let i = index" [class.active]="hover" (mouseover)="hover=true" (mouseout)="hover=false">
+		<mat-card-header>
+			<div mat-card-avatar class="m-4"><img mat-card-image [src]="player.getIMG()"/></div>
+			<mat-card-title>{{ player.name }}</mat-card-title>
+			<mat-card-subtitle>{{ player.position }}</mat-card-subtitle>
+			<mat-card-subtitle>BirthDate: {{ player.dateBorn }}</mat-card-subtitle>
+			<mat-card-subtitle class="mb-0">Price: {{ player.getTransferAmout() }}</mat-card-subtitle>
+		</mat-card-header>
+	</mat-card>
+</div>

@@ -1,0 +1,45 @@
+mat-card {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+	opacity: 1;
+}
+
+mat-card:hover {
+	-webkit-transform: scale(1.03);
+	transform: scale(1.03);
+	opacity: 1;
+}
+
+mat-card.active:not(:hover) {
+	opacity: .5;
+}
+
+.mat-card-avatar {
+    width: 70px !important;
+}
+
+.mat-card-image {
+    border-radius: 50% !important;
+}
+
+.tooltip-white {
+	background: #ffffff;
+	color: #6c757d !important;
+}
+
+mat-toolbar img {
+	width: 50px;
+}
+
+a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.mat-chip {
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    background-color: #28a745 !important;
+}

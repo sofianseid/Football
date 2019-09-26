@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+  	<mat-toolbar-row>
+		<form class="mx-4" fxFlex>
+			<mat-form-field appearance="standard" fxFlex>
+		    	<mat-label>Search by league</mat-label>
+				<input matInput placeholder="" [matAutocomplete]="auto" [formControl]="leagueCtrl">
+				<mat-autocomplete #auto="matAutocomplete" (optionSelected)="getTeams()" [displayWith]="displayFn">
+					<mat-option *ngFor="let league of filteredLeagues | async" [value]="league">
+						<span>{{league.name}}</span>
+					</mat-option>
+				</mat-autocomplete>
+			</mat-form-field>
+		</form>
+	</mat-toolbar-row>
+</mat-toolbar>
+
+<mat-grid-list *ngIf="!progress" class="my-5 mx-2" cols="2" rowHeight="2:1">
+	<mat-grid-tile *ngFor="let team of teams; let i = index" colspan="1" rowspan="1">
+		<a class="team-badge" [routerLink]="['/team', team.id]">
+			<img [src]="team.badge" [class.pulse]="this['anime'+i]" (mouseover)="this['anime'+i]=true" (mouseout)="this['anime'+i]=false"/>
+		</a>
+  	</mat-grid-tile>
+</mat-grid-list>
+
+<mat-progress-bar *ngIf="progress" color="warn" mode="indeterminate" value="50"></mat-progress-bar>

@@ -1,0 +1,15 @@
+.mat-toolbar {
+    min-height: 100px;
+}
+
+.mat-toolbar-row {
+    height: 100px;
+}
+
+.team-badge {
+	height: 85%;
+}
+
+.team-badge img {
+	height: 100%;
+}
